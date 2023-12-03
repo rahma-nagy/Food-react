@@ -34,7 +34,14 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
   console.log(error);
 })
   }
-  const[CategoriesList,setCategoriesList]= useState([])
+  const[CategoriesList,setCategoriesList]= useState([]);
+
+  // const [modelState,setModelState]=useState("close");
+
+  // const showDeleteModel =() =>{
+  //   setModelState("model-two")
+  // }
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -96,7 +103,10 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
   <tr key={category.id}>
     <th scope='row'>{category.id}</th>
     <td>{category.name}</td>
-    <td></td>
+
+    <td><i className='fa fa-edit fa-1x mx-2 text-warning'></i>
+    <i onClick={handleShow} className='fa fa-trash fa-1x text-danger'></i>
+    </td>
   </tr>
   </>)}
   </tbody>

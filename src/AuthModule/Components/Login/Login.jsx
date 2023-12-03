@@ -14,9 +14,7 @@ export default function Login({saveAdminData}) {
     const[isLoading,setIsLoading]=useState(false)
 const onSubmit =(data)=>{
 axios.post('https://upskilling-egypt.com:443/api/v1/Users/Login',data)
-
 .then((response)=>{
-  
     localStorage.setItem("adminToken",response?.data?.token)
     saveAdminData()
     setIsLoading(true)
@@ -24,7 +22,7 @@ axios.post('https://upskilling-egypt.com:443/api/v1/Users/Login',data)
    
 }).catch((error)=>{
     setIsLoading(false)
-    toast(error.response.data.message);
+    toast(error?.response?.data?.message);
 
 })
 }
@@ -32,7 +30,6 @@ axios.post('https://upskilling-egypt.com:443/api/v1/Users/Login',data)
   return (
     <div className="Auth-container">
       
-            
         <div className="row bg-overlay  vh-100">
             <div className="col-md-6 m-auto">
                 <div className="bg-white p-2" >

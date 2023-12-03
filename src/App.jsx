@@ -12,7 +12,7 @@ import RecipesList from './RecipesModule/Components/RecipesList/RecipesList'
 import CategoriesList from './CategoriesModule/Compponents/CategoriesList/CategoriesList'
 import Authlayout from './SharedModules/Components/Authlayout/Authlayout'
 import ForgetPassword from './AuthModule/Components/ForgetPassword/ForgetPassword'
-import ProtectedRoute from './SharedModules/Components/ProtectedRoute/ProtectedRoute'
+// import ProtectedRoute from './SharedModules/Components/ProtectedRoute/ProtectedRoute'
 import { jwtDecode } from 'jwt-decode'
 import RequestResetPassword from './AuthModule/Components/RequestResetPassword/RequestResetPassword'
 import ResetPassword from './AuthModule/Components/ResetPassword/ResetPassword'
@@ -35,7 +35,9 @@ function App() {
   },[])
  const routes=createBrowserRouter([
   {path:"/dashboard",
-element: <ProtectedRoute adminData={adminData}> <Masterlayout adminData={adminData} />  </ProtectedRoute>,
+element: <Masterlayout adminData={adminData} /> ,
+
+
 
 
 errorElement:<NotFound/>,
@@ -67,3 +69,6 @@ children:[{index:true,element:<Home/>},
 }
 
 export default App
+
+
+// element: <ProtectedRoute adminData={adminData}> <Masterlayout adminData={adminData} />  </ProtectedRoute>,

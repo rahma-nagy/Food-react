@@ -36,27 +36,31 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
   }
   const[CategoriesList,setCategoriesList]= useState([]);
 
-  // const [modelState,setModelState]=useState("close");
+  const [modelState,setModelState]=useState("close");
 
-  // const showDeleteModel =() =>{
-  //   setModelState("model-two")
-  // }
+  const showAddModel =() =>{
+    setModelState("modal-one")
+  }
 
-  const [show, setShow] = useState(false);
+  const showDeleteModel =() =>{
+    setModelState("modal-two")
+  }
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  const handleClose= () => setModelState("close") ;
   useEffect(()=>{
    getCategoriesList()
   },[])
   return (<>
   <Header title={'welcom Categoties'} paragraph={'categories'}/>
   
-  <Modal show={show} onHide={handleClose}>
+  <Modal show={modelState==="modal-one"} onHide={handleClose}>
        
        <Modal.Body>
     <h4>Add New Category </h4>
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={showAddModel}>
       <div className="form-group my-3">
         
           <input className="form-control" placeholder='category Name' type="text" {...register("name",{required:true})} />
@@ -72,6 +76,15 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
        </Modal.Body>
       
      </Modal>
+
+     <Modal show={modelState==="modal-two"} onHide={handleClose}>
+       
+       <Modal.Body>
+    <h4>Delete Category </h4>
+  
+       </Modal.Body>
+      
+     </Modal>
       <div className='row  mx-4 p-3'>
         <div className="col-md-6">
           <div>
@@ -84,7 +97,7 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
         </div>
         <div className="col-md-6 text-end">
           <div>
-           <button onClick={handleShow} className='btn btn-success'>Add New Category</button>
+           <button onClick={showAddModel} className='btn btn-success'>Add New Category</button>
           </div>
 
         </div>
@@ -99,16 +112,16 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
     </tr>
   </thead>
   <tbody>
-  {CategoriesList.map((category)=><>
+  {CategoriesList.map((category)=><React.Fragment key={category.id}>
   <tr key={category.id}>
     <th scope='row'>{category.id}</th>
     <td>{category.name}</td>
 
     <td><i className='fa fa-edit fa-1x mx-2 text-warning'></i>
-    <i onClick={handleShow} className='fa fa-trash fa-1x text-danger'></i>
+    <i onClick={showDeleteModel} className='fa fa-trash fa-1x text-danger'></i>
     </td>
   </tr>
-  </>)}
+  </React.Fragment>)}
   </tbody>
 </table>
       </div>:(<NoData/>)}

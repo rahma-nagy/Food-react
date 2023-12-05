@@ -7,7 +7,8 @@ import Login from './AuthModule/Components/Login/Login'
 import { RouterProvider, createBrowserRouter, createHashRouter } from 'react-router-dom'
 import Masterlayout from './SharedModules/Components/Masterlayout/Masterlayout'
 import NotFound from './SharedModules/Components/NotFound/NotFound'
-import UserList from './UsersModule/Components/UserList/userList'
+// import UserList from './UsersModule/Components/UserList/userList'
+
 import RecipesList from './RecipesModule/Components/RecipesList/RecipesList'
 import CategoriesList from './CategoriesModule/Compponents/CategoriesList/CategoriesList'
 import Authlayout from './SharedModules/Components/Authlayout/Authlayout'
@@ -17,6 +18,7 @@ import { jwtDecode } from 'jwt-decode'
 import RequestResetPassword from './AuthModule/Components/RequestResetPassword/RequestResetPassword'
 import ResetPassword from './AuthModule/Components/ResetPassword/ResetPassword'
 import { ToastContainer } from 'react-toastify'
+import UserList from './UsersModule/Components/UserList/UserList'
 
 
 function App() {

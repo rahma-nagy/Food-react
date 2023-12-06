@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../../SharedModules/Components/Header/Header'
 import axios from 'axios'
-import NoData from '../../../SharedModules/Components/NoData/NoData'
+// import NoData from '../../../assets/imgs/nodata.png';
+import nodata from '../../../assets/imgs/nodata.png';
 import Modal from 'react-bootstrap/Modal';
 import { useForm } from 'react-hook-form';
 
@@ -10,8 +11,6 @@ export default function CategoriesList() {
   const getCategoriesList=()=>{
     axios.get("https://upskilling-egypt.com:443/api/v1/Category/?pageSize=10&pageNumber=1",{headers:{
       Authorization:`Bearer ${localStorage.getItem("adminToken")}`
-
-      
     }
 
     }).then((response)=>{
@@ -19,8 +18,8 @@ export default function CategoriesList() {
     }).catch((error)=>{
       console.log(error);
     })
-
   }
+
   const onSubmit=(data)=>{
 axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
   headers:{
@@ -38,11 +37,15 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
 
   const [modelState,setModelState]=useState("close");
 
+  const [itemId,setItemId]=useState(0);
+
+
   const showAddModel =() =>{
     setModelState("modal-one")
   }
 
-  const showDeleteModel =() =>{
+  const showDeleteModel =(id) =>{
+    setItemId(id)
     setModelState("modal-two")
   }
 
@@ -50,6 +53,21 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
 
   // const handleClose = () => setShow(false);
   const handleClose= () => setModelState("close") ;
+
+  const deleteCategories =()=>{
+    axios.delete(`https://upskilling-egypt.com:443/api/v1/Category/${itemId}`,{
+     headers:{
+      Authorization:`Bearer ${localStorage.getItem("adminToken")}`
+    }
+  }).then((response)=>{
+    console.log(response);
+    handleClose();
+  
+  }).catch((error)=>console.log(error))
+  }
+
+
+
   useEffect(()=>{
    getCategoriesList()
   },[])
@@ -80,8 +98,16 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
      <Modal show={modelState==="modal-two"} onHide={handleClose}>
        
        <Modal.Body>
-    <h4>Delete Category </h4>
-  
+        <div className="text-center">
+
+        <img src={nodata} alt='#'/>
+        <h5 className='my-2'>Delete This Item?</h5>
+        <span className='text-muted'>are you sure you want to delete this item ? if you are sure just click on delete it</span>
+        </div>
+        <div className="text-end my-2">
+            <button onClick={deleteCategories} className='btn btn-outline-danger'>Delete This Item</button>
+
+        </div>
        </Modal.Body>
       
      </Modal>
@@ -118,13 +144,13 @@ axios.post("https://upskilling-egypt.com:443/api/v1/Category/",data,{
     <td>{category.name}</td>
 
     <td><i className='fa fa-edit fa-1x mx-2 text-warning'></i>
-    <i onClick={showDeleteModel} className='fa fa-trash fa-1x text-danger'></i>
+    <i onClick={()=>showDeleteModel(category.id)} className='fa fa-trash fa-1x text-danger'></i>
     </td>
   </tr>
   </React.Fragment>)}
   </tbody>
 </table>
-      </div>:(<NoData/>)}
+      </div>:(<nodata/>)}
       
       </div>
      

@@ -21,7 +21,7 @@ export default function SideBar() {
     navigate('/login')
   }
   return (
-    <div className='sideBar-Container'>
+    <div className='sideBar-Container position-fixed'>
         
 
       <Modal show={show} onHide={handleClose}>

@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../context/AuthContext";
+import FacebookLogin from "../../../AuthModule/Components/FacebookLogin/FacebookLogin.jsx";
 
 export default function Login({ setUserData }) {
   const {
@@ -14,6 +15,9 @@ export default function Login({ setUserData }) {
     formState: { errors },
   } = useForm();
 
+  const handleLogin = (data) => {
+    console.log('Login successful', data);
+  };
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { baseUrl } = useContext(AuthContext);
@@ -110,9 +114,16 @@ export default function Login({ setUserData }) {
               >
                 Login
               </button>
+              <div>
+     <i class="fa-brands fa-facebook"></i>
+      <FacebookLogin onLogin={handleLogin}/>
+      </div>
             </form>
+
+            
           </div>
         </div>
+
       </div>
     </div>
   );

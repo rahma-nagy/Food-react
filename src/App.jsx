@@ -15,7 +15,6 @@ import ForgetPassword from "./AuthModule/Components/ForgetPassword/ForgetPasswor
 import RequestResetPassword from "./AuthModule/Components/RequestResetPassword/RequestResetPassword";
 import ResetPassword from "./AuthModule/Components/ResetPassword/ResetPassword";
 import { ToastContainer } from "react-toastify";
-import FacebookLogin from './AuthModule/Components/FacebookLogin/FacebookLogin.jsx';
 
 import { AuthContext } from "./context/AuthContext";
 import Favorites from "./RecipesModule/Components/Favorites/Favorites";
@@ -24,9 +23,7 @@ import Register from "./AuthModule/Components/Register/Register";
 function App() {
   let { userData, setUserData } = useContext(AuthContext);
 
-  const handleLogin = (data) => {
-    console.log('Login successful', data);
-  };
+ 
 
   const routes = createBrowserRouter([
     {
@@ -61,10 +58,7 @@ function App() {
 
       <RouterProvider router={routes} />
       <ToastContainer />
-      <div>
-      <h5>Facebook Login Example</h5>
-      <FacebookLogin onLogin={handleLogin}/>
-      </div>
+    
     </>
   );
 }

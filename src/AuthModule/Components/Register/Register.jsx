@@ -14,6 +14,8 @@ export default function Register({ setUserData }) {
     formState: { errors },
   } = useForm();
 
+
+  
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { baseUrl } = useContext(AuthContext);

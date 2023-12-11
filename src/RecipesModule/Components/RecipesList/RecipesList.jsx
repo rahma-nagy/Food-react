@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext.jsx";
 
+
 export default function RecipesList() {
   const [RecipesList, setRecipesList] = useState([]);
   const [modalState, setModalState] = useState("close");
@@ -23,6 +24,7 @@ export default function RecipesList() {
   const [tagsList, setTagsList] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const handleClose = () => setModalState("close");
+ 
   const {
     register,
     handleSubmit,
@@ -315,6 +317,8 @@ export default function RecipesList() {
           ) : (
             <NoData />
           )}
+
+    
         </div>
       </div>
     </>

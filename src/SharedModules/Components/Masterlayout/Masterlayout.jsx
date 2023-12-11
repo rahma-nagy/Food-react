@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar'
 
 import SideBar from '../SideBar/SideBar'
 
-export default function Masterlayout({adminData}){
+export default function Masterlayout({userData}){
   return <>
   <div className="container-fluid">
     <div className="row">
@@ -13,7 +13,7 @@ export default function Masterlayout({adminData}){
         </div>
         <div className="col-md-10">
             <div>
-               <Navbar adminData={adminData} />
+               <Navbar userData={userData} />
               <div className="container-fluid">
               <Outlet/>
               </div>

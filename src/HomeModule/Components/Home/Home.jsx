@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Home() {
   return (
     <>
-    <Header title={'Home'} paragraph={'homeeeeeee'}/>
+    <Header title={'Welcome!'} paragraph={'This is a welcoming screen for the entry of the application , you can now see the options'}/>
     <div className='row section-container mx-4 rounded-2 align-items-center'>
       <div className="col-md-6">
         <div>

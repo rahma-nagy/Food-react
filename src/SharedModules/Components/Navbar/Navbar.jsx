@@ -1,8 +1,8 @@
 import React from 'react'
 import avatar from '../../../assets/imgs/avatar.png'
 
-export default function Navbar({adminData}) {
- console.log(adminData);
+export default function Navbar({userData}) {
+ console.log(userData);
   return (
 
   <>
@@ -17,7 +17,7 @@ export default function Navbar({adminData}) {
    
       <li className="nav-item ">
       
-        <a className="nav-link text-white" href="#">   <img src={avatar} alt="" />{adminData?.userName}</a>
+        <a className="nav-link text-white" href="#">   <img src={avatar} alt="" />{userData?.userName}</a>
       </li>
       
     </ul>

@@ -17,7 +17,7 @@ export default function SideBar() {
     setIsCollapsed(!isCollapsed)
   }
   let logOut =()=>{
-    localStorage.removeItem("adminToken")
+    localStorage.removeItem("userToken")
     navigate('/login')
   }
   return (
@@ -34,20 +34,18 @@ export default function SideBar() {
 
       <Sidebar collapsed={!isCollapsed}>
   <Menu>
-  <MenuItem onClick={ handleToggle} icon={<img src={logo}alt='logo'/>} >  </MenuItem>
+  <MenuItem onClick={ handleToggle} icon={<img src={logo}alt='logo' className='m-5'/>} >  </MenuItem>
     
-      <MenuItem icon={<i className="fa-solid fa-house" ></i>} component={<Link to ='/dashboard'/>}> Home </MenuItem>
-      <MenuItem  icon={ <i className="fa-regular fa-user"></i>} component={<Link to ='/dashboard/users'/>}> Users </MenuItem>
-   
-    <MenuItem icon={<i className="fa-solid fa-qrcode"></i>} component={<Link to ='/dashboard/recipes'/>}> Recipes </MenuItem>
-    <MenuItem icon={<i className="fa-regular fa-calendar"></i>} component={<Link to ='/dashboard/categories'/>}> Categories </MenuItem>
-    <MenuItem onClick={handleShow} icon={<i className="fa-solid fa-qrcode"></i>} > Change Password </MenuItem>
+      <MenuItem icon={<i className="fa-solid fa-home" ></i>} component={<Link to ='/dashboard'/>}> Home </MenuItem>
+      <MenuItem icon={<i className="fa-solid fa-heart" ></i>} component={<Link to ='/dashboard/favorites'/>}> Favorites </MenuItem>
+    <MenuItem icon={<i className="fa-solid fa-bowl-rice"></i>} component={<Link to ='/dashboard/recipes'/>}> Recipes </MenuItem>
+    <MenuItem onClick={handleShow} icon={<i className="fa-solid  fa-calendar-days"></i>} > Change Password </MenuItem>
     <MenuItem icon={<i className="fa-solid fa-right-from-bracket"></i>} onClick={logOut}> logOut </MenuItem>
 
 
 
   </Menu>
-</Sidebar >;
+</Sidebar >
     </div>
     
   )

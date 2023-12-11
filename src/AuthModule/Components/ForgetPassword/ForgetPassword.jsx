@@ -7,14 +7,13 @@ import { toast } from 'react-toastify';
 
 export default function ({handleClose}) {
  const{register,handleSubmit,formState:{errors}} =useForm();
+ const {requstHeaders,baseUrl}= useContext(AuthContextProvider);
 
   const navigate=useNavigate()
  const onSubmit= (data)=>{
   console.log(data);
-  axios.put("http://upskilling-egypt.com:3002/api/v1/Users/ChangePassword",data,{
-    headers:{
-      Authorization: `Bearer ${localStorage.getItem("adminToken")}`
-    }
+  axios.put(`${baseUrl}/Users/ChangePassword`,data,{
+    headers:requstHeaders,
   }).then((response)=>{
  
     handleClose()

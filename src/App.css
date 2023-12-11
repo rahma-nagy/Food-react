@@ -67,6 +67,9 @@ background-color: #ede8e8;
   background-color: #1f263e;
   color: #fff;
   height: 100vh;
+  /* position: fixed;
+  left: 0; */
+  border-top-right-radius: 58px;
 }
 .sideBar-Container .ps-sidebar-container .ps-menu-button:hover{
   background-color: #009247;
